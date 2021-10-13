@@ -13,8 +13,8 @@ app.get('/patterns/:id', (req, res) => {
 });
 app.post('/patterns', (req, res) => {
   const pattern = req.body;
-  const stmt = db.prepare('INSERT INTO patterns (pattern, color) VALUES (?, ?, ?)');
-  const result = stmt.run(pattern.pattern, pattern.color);
+  const stmt = db.prepare('INSERT INTO patterns (pattern, color) VALUES (?, ?, ?, ?)');
+  const result = stmt.run(pattern.pattern, pattern.color, pattern.meaning);
   res.send(result);
 });
 
