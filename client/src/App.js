@@ -22,14 +22,16 @@ function App() {
     const btnRef = useRef(null);
 
     useEffect(() => {
-        fetch('http://192.168.178.71:5000/patterns')
+        fetch('http://localhost:5000/patterns')
             .then(res => res.json())
             .then(data => {
                 setPatternData(data);
                 setCreationMode(false);
                 setRecording(false);
             });
+    }, []);
 
+    useEffect(() => {
         if (!btnRef.current) return;
 
         const mouseDown = () => {
