@@ -46,6 +46,8 @@ function App() {
         btnRef.current.addEventListener('mouseup', mouseUp);
 
         return () => {
+            if (!btnRef.current) return;
+
             btnRef.current.removeEventListener('mousedown', mouseDown);
             btnRef.current.removeEventListener('mouseup', mouseUp);
         };
