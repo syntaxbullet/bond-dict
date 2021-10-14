@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const db = require('better-sqlite3')('patterns.db', { verbose: console.log });
+const cors = require('cors');
+
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -18,6 +21,6 @@ app.post('/patterns', (req, res) => {
   res.send(result);
 });
 
-app.listen(3000, () => {
-  console.log('API running on port 3000!');
+app.listen(5000, () => {
+  console.log('API running on port 5000!');
 });
