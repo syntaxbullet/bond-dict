@@ -4,7 +4,7 @@ import sqlite3 from "better-sqlite3";
 
 const app: Express.Application = Express();
 const db: sqlite3.Database = sqlite3("./patterns.db", { verbose: console.log });
-const port: string | number = process.env.PORT || 3000;
+const port: string | number = process.env.PORT || 5000;
 
 app.use(cors());
 
@@ -35,6 +35,6 @@ app.post("/patterns", (req: Express.Request, res: Express.Response) => {
   res.send(pattern);
 });
 
-app.listen(3000, () => {
-  console.log("Server started on port 3000");
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });
