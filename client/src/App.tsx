@@ -11,7 +11,7 @@ export const App = () => {
   const [isRecording, setIsRecording] = useState(false)
   // create a useEffect to fetch the number of patterns
   useEffect(() => {
-    fetch('http://localhost:5000/patterns')
+    fetch('http://192.168.178.71:5000/patterns')
       .then((res) => res.json())
       .then((data) => {
         setPatterns(data)

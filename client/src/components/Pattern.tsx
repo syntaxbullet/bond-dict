@@ -9,8 +9,8 @@ const Pattern = (props: any) => {
       <div
         className="pattern-wrapper"
         style={{
-          maxWidth: '80vw',
-          width: '50%',
+          maxWidth: '1200px',
+          width: '80vw',
           display: 'flex',
           marginTop: '2em'
         }}>

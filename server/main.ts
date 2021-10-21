@@ -1,13 +1,13 @@
 import Express from 'Express'
 import cors from 'cors'
 import sqlite3 from 'better-sqlite3'
-
+import bodyParser from 'body-parser'
 const app: Express.Application = Express()
 const db: sqlite3.Database = sqlite3('./patterns.db', { verbose: console.log })
 const port: string | number = process.env.PORT || 5000
 
 app.use(cors())
-
+app.use(bodyParser.json())
 interface Pattern {
   id: number
   pattern: number[]
@@ -27,12 +27,12 @@ app.get('/patterns/:id', (req: Express.Request, res: Express.Response) => {
 })
 // POST /patterns - creates a new pattern
 app.post('/patterns', (req: Express.Request, res: Express.Response) => {
-  const pattern: Pattern = req.body
+  console.log(req.body)
   db.prepare('INSERT INTO patterns (pattern, meaning) VALUES (?, ?)').run(
-    pattern.pattern,
-    pattern.meaning
+    req.body.pattern,
+    req.body.meaning
   )
-  res.send(pattern)
+  res.send(req.body)
 })
 
 app.listen(port, () => {
